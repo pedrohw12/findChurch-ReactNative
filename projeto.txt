@@ -1,0 +1,9 @@
+Catálogo de igrejas.
+
+Seleciona a:
+- cidade, 
+- denominação da igreja 
+
+  e obtém as igrejas disponíveis.
+
+As informações serão : quantidade de membros, horários dos cultos e link do site.
