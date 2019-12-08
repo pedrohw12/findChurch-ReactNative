@@ -1,31 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+import { 
+  View, 
+  Text, 
+  FlatList, 
+  TextInput, 
+  TouchableOpacity, 
+  StatusBar 
+} from 'react-native';
 
 import api from './data/api.json';
-
-import SearchBar from './SearchBar';
 
 export default function App() {
   const [ igrejas, setIgrejas ] = useState('buscando...');
   const [ busca, setBusca ] = useState('');
-  const [ result, setResult ] = useState('');
-
-  useEffect(()=>{
-    const response = api.igrejas;
-    setIgrejas(response) 
-    console.log(busca)
-  },[]); 
+  const [ result, setResult ] = useState(''); 
  
   function handleInput(t) {
     setBusca(t); 
   }
 
   function handleSubmit() {
-    // var filtro = api.igrejas.filter(i => i.nome === busca || i.cidade === busca);
-    // x = filtro[0].cidade;
     var filtro = api.igrejas.filter(
       (i)=> {
-        return i.cidade.indexOf(busca) !== -1 || i.nome.indexOf(busca) !== -1 ;
+        return i.cidade.toLowerCase().indexOf(busca.toLowerCase()) !== -1 || i.nome.toLowerCase().indexOf(busca.toLowerCase()) !== -1 ;
       }
     );
     setResult(filtro);
