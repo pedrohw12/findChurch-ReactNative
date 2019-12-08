@@ -11,9 +11,9 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import api from './data/api.json';
+import api from '../data/api.json';
 
-export default function App() {
+function Main() {
   const [ busca, setBusca ] = useState('');
   const [ result, setResult ] = useState(''); 
   const [growAnim] = useState(new Animated.Value(0))
@@ -37,14 +37,6 @@ export default function App() {
 
   useEffect(() => {
     Animated.sequence([
-
-      // Animated.timing(
-      //   heightAnim,
-      //   {
-      //     toValue: screenHeight,
-      //     duration: 1099,
-      //   }
-      // ),
 
       Animated.timing(
         fadeAnim,
@@ -92,7 +84,7 @@ export default function App() {
 
       
       <FlatList 
-        style={{marginTop: 40}}
+        style={{marginTop: 20}}
         data={result}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
@@ -124,3 +116,5 @@ export default function App() {
     </Animated.View>
   );
 }
+
+export default Main;
