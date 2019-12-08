@@ -7,7 +7,6 @@ import {
   TouchableOpacity, 
   StatusBar,
   Animated,
-  Dimensions 
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,14 +14,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from './data/api.json';
 
 export default function App() {
-  const [ igrejas, setIgrejas ] = useState('buscando...');
   const [ busca, setBusca ] = useState('');
   const [ result, setResult ] = useState(''); 
   const [growAnim] = useState(new Animated.Value(0))
-  const [heightAnim] = useState(new Animated.Value(0))
   const [fadeAnim] = useState(new Animated.Value(0.3))
-
-  const screenHeight = Math.round(Dimensions.get('window').height);
  
   function handleInput(t) {
     setBusca(t); 
