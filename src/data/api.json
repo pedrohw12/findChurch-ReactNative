@@ -16,6 +16,10 @@
     {
       "id": "4", "nome": "Igreja da salvação","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "178",
       "horario": "10:00h", "site": "www.igrejaemcristo.com.br"
+    },
+    {
+      "id": "5", "nome": "Igreja de paulo","cidade": "recife", "denominacao": "batista", "qnt": "178",
+      "horario": "10:00h", "site": "www.igrejaemcristo.com.br"
     }
   ]
 } 

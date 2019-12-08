@@ -3,6 +3,8 @@ import { View, Text, FlatList, TextInput, TouchableOpacity, StatusBar } from 're
 
 import api from './data/api.json';
 
+import SearchBar from './SearchBar';
+
 export default function App() {
   const [ igrejas, setIgrejas ] = useState('buscando...');
   const [ busca, setBusca ] = useState('');
@@ -11,6 +13,7 @@ export default function App() {
   useEffect(()=>{
     const response = api.igrejas;
     setIgrejas(response) 
+    console.log(busca)
   },[]); 
  
   function handleInput(t) {
@@ -18,18 +21,23 @@ export default function App() {
   }
 
   function handleSubmit() {
-    var arr1 = api.igrejas.filter(d => d.nome === busca || d.cidade === busca);
-    x = arr1[0].cidade;
-    setResult(x);
-    console.log(result);
-    // console.log(result.length)
+    // var filtro = api.igrejas.filter(i => i.nome === busca || i.cidade === busca);
+    // x = filtro[0].cidade;
+    var filtro = api.igrejas.filter(
+      (i)=> {
+        return i.cidade.indexOf(busca) !== -1 || i.nome.indexOf(busca) !== -1 ;
+      }
+    );
+    setResult(filtro);
+    setBusca('');      
   }
  
   return (
     <View style={{padding: 20, flex: 1, backgroundColor: "#0336FF"}}>
       <StatusBar backgroundColor="#1111AA" />
       <TextInput 
-        placeholder="Find churchs..." 
+        value={busca}
+        placeholder="Find churchs..."
         onChangeText={(t)=> handleInput(t)} 
         style={{borderRadius: 4, marginBottom: 20, padding:10, backgroundColor: "white"}} 
       />
@@ -47,10 +55,11 @@ export default function App() {
           <Text style={{fontWeight: "bold"}}> Buscar </Text>
         </TouchableOpacity>   
       }
-      {result.length > 0 &&
+
+      
       <FlatList 
         style={{marginTop: 40}}
-        data={igrejas}
+        data={result}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
           <View style={{borderRadius: 4, padding: 10, margin: 5, backgroundColor: "white"}}>
@@ -63,7 +72,7 @@ export default function App() {
         )}
       />
       
-        }
+        
         {result === '' &&
           <View style={{flex: 1, marginTop: '30%', alignItems: "center"}}>
             <Text style={{color: "white", fontWeight: "bold", fontSize: 30}}> God's House </Text>
