@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TextInput, Button } from 'react-native';
+import { View, Text, FlatList, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
 import api from './data/api.json';
 
 export default function App() {
   const [ igrejas, setIgrejas ] = useState('buscando...');
-  const [ botao, setBotao ] = useState(false);
   const [ busca, setBusca ] = useState('');
   const [ result, setResult ] = useState('');
 
@@ -27,10 +26,26 @@ export default function App() {
   }
  
   return (
-    <View style={{padding: 20, flex: 1}}>
-      <TextInput placeholder="Pesquisar igrejas..." onChangeText={(t)=> handleInput(t)} style={{borderWidth: 1, borderRadius: 4, marginBottom: 20, padding:10}} />
+    <View style={{padding: 20, flex: 1, backgroundColor: "#0336FF"}}>
+      <StatusBar backgroundColor="#1111AA" />
+      <TextInput 
+        placeholder="Find churchs..." 
+        onChangeText={(t)=> handleInput(t)} 
+        style={{borderRadius: 4, marginBottom: 20, padding:10, backgroundColor: "white"}} 
+      />
+
       {busca.length > 1 && 
-        <Button title="Buscar" onPress={()=> handleSubmit()} />
+        <TouchableOpacity 
+          style={{
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            backgroundColor: "#ffde03",
+            height: 44,
+            borderRadius: 4,
+          }} 
+          onPress={()=> handleSubmit()}>
+          <Text style={{fontWeight: "bold"}}> Buscar </Text>
+        </TouchableOpacity>   
       }
       {result.length > 0 &&
       <FlatList 
@@ -38,18 +53,21 @@ export default function App() {
         data={igrejas}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <View style={{borderWidth: 1, borderRadius: 4, padding: 10, margin: 5}}>
-            <Text style={{fontSize: 20, marginBottom: 2}}> {item.nome} </Text>
-            <Text style={{color: "#666", marginBottom: 7}}> {item.denominacao} </Text>
-            <Text style={{marginTop: 3}}> {item.qnt} membros </Text>
-            <Text style={{marginTop: 3}}> Início às {item.horario} </Text>
-            <Text style={{marginTop: 10}}> {item.site} </Text>
+          <View style={{borderRadius: 4, padding: 10, margin: 5, backgroundColor: "white"}}>
+            <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
+            <Text style={{color: "#0336FA", marginBottom: 7}}> {(item.denominacao).toUpperCase()} </Text>
+            <Text style={{marginTop: 3, color: "#0003FF", fontWeight: "bold"}}> {item.qnt} membros </Text>
+            <Text style={{marginTop: 3, fontWeight: "bold"}}> Início às {item.horario} </Text>
+            <Text style={{marginTop: 10, color: "#0336FA"}}> {item.site} </Text>
           </View>  
         )}
       />
+      
         }
-        {result.length < 1 &&
-          <Text> {result} </Text>
+        {result === '' &&
+          <View style={{flex: 1, marginTop: '30%', alignItems: "center"}}>
+            <Text style={{color: "white", fontWeight: "bold", fontSize: 30}}> God's House </Text>
+          </View>
         }
     </View>
   );

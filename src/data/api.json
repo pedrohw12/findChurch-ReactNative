@@ -2,19 +2,19 @@
   "igrejas":
   [
     {
-      "id": "1", "nome": "igreja batista", "cidade": "mundo", "denominacao": "batista", "qnt": "508",
+      "id": "1", "nome": "Igreja batista", "cidade": "mundo", "denominacao": "batista", "qnt": "508",
       "horario": "10:00h", "site": "www.igreja.com.br"
     },
     {
-      "id": "2", "nome": "igreja central", "cidade": "campinas", "denominacao": "batista", "qnt": "241",
+      "id": "2", "nome": "Igreja central", "cidade": "campinas", "denominacao": "batista", "qnt": "241",
       "horario": "09:30h", "site": "www.ibmo.com.br"
     },
     {
-      "id": "3", "nome": "igreja da fonte","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "365",
+      "id": "3", "nome": "Igreja da fonte","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "365",
       "horario": "10:15h", "site": "www.acgh.com.br"
     },
     {
-      "id": "4", "nome": "igreja da salvação","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "178",
+      "id": "4", "nome": "Igreja da salvação","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "178",
       "horario": "10:00h", "site": "www.igrejaemcristo.com.br"
     }
   ]
