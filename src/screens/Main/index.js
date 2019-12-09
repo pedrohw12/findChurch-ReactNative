@@ -9,15 +9,18 @@ import {
   Animated,
 } from 'react-native';
 
+import {Botao} from './styles';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import api from '../data/api.json';
+import api from '../../data/api.json';
 
 function Main() {
   const [ busca, setBusca ] = useState('');
   const [ result, setResult ] = useState(''); 
   const [growAnim] = useState(new Animated.Value(0))
-  const [fadeAnim] = useState(new Animated.Value(0.3))
+  const [fadeAnim] = useState(new Animated.Value(1))
+  const [ cor, setCor ] = useState(true);
  
   function handleInput(t) {
     setBusca(t); 
@@ -92,9 +95,14 @@ function Main() {
 
             <View style={{flexDirection: 'row', alignItems: "center"}}>
               <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
-              <TouchableOpacity>
-                <Icon style={{marginLeft: 10}} name="star" size={25} color="black" />
-              </TouchableOpacity>
+              <Botao onPress={()=> setCor(!cor)}>
+                {cor && 
+                  <Icon style={{marginLeft: 10}} name="star" size={25} color="black" />
+                }
+                {!cor && 
+                  <Icon style={{marginLeft: 10}} name="star" size={25} color="yellow" />
+                }
+              </Botao>
             </View>
 
             <Text style={{color: "#0336FA", marginBottom: 7}}> {(item.denominacao)} </Text>
