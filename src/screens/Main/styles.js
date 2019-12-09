@@ -6,5 +6,5 @@ export const Botao = styled.TouchableOpacity`
 `;
 
 export const Img = styled(Icon)`
-  color: ${props=>props.index?"red":"orange"}
+  color: ${props=>props.index?"yellow":"black"}
 `;

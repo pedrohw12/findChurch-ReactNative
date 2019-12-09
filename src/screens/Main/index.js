@@ -102,9 +102,9 @@ function Main() {
           <View style={{borderRadius: 4, padding: 10, margin: 5, backgroundColor: "white"}}>
 
             <View style={{flexDirection: 'row', alignItems: "center"}}>
-              <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} - {item.favorito.toString()} </Text>
+              <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
               <Botao onPress={()=> [setSelected(!selected), toggleFavorito(index)]}>
-                <Img name="star" size={25} color={(index)} />
+                <Img name="star" size={25} index={item.favorito} />
               </Botao>
             </View>
 
