@@ -90,7 +90,12 @@ function Main() {
         renderItem={({item}) => (
           <View style={{borderRadius: 4, padding: 10, margin: 5, backgroundColor: "white"}}>
 
-            <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
+            <View style={{flexDirection: 'row', alignItems: "center"}}>
+              <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
+              <TouchableOpacity>
+                <Icon style={{marginLeft: 10}} name="star" size={25} color="black" />
+              </TouchableOpacity>
+            </View>
 
             <Text style={{color: "#0336FA", marginBottom: 7}}> {(item.denominacao)} </Text>
 
