@@ -3,23 +3,23 @@
   [
     {
       "id": "1", "nome": "Igreja batista", "cidade": "mundo", "denominacao": "batista", "qnt": "508",
-      "horario": "10:00h", "site": "www.igreja.com.br"
+      "horario": "10:00h", "site": "www.igreja.com.br", "favorito": false
     },
     {
       "id": "2", "nome": "Igreja central", "cidade": "campinas", "denominacao": "batista", "qnt": "241",
-      "horario": "09:30h", "site": "www.ibmo.com.br"
+      "horario": "09:30h", "site": "www.ibmo.com.br", "favorito": false
     },
     {
       "id": "3", "nome": "Igreja da fonte","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "365",
-      "horario": "10:15h", "site": "www.acgh.com.br"
+      "horario": "10:15h", "site": "www.acgh.com.br", "favorito": false
     },
     {
       "id": "4", "nome": "Igreja da salvação","cidade": "campinas/Barão Geraldo", "denominacao": "batista", "qnt": "178",
-      "horario": "10:00h", "site": "www.igrejaemcristo.com.br"
+      "horario": "10:00h", "site": "www.igrejaemcristo.com.br", "favorito": false
     },
     {
       "id": "5", "nome": "Igreja de paulo","cidade": "recife", "denominacao": "batista", "qnt": "178",
-      "horario": "10:00h", "site": "www.igrejaemcristo.com.br"
+      "horario": "10:00h", "site": "www.igrejaemcristo.com.br", "favorito": false
     }
   ]
 } 

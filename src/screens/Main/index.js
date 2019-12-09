@@ -9,7 +9,7 @@ import {
   Animated,
 } from 'react-native';
 
-import {Botao} from './styles';
+import {Botao, Img} from './styles';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -21,6 +21,7 @@ function Main() {
   const [growAnim] = useState(new Animated.Value(0))
   const [fadeAnim] = useState(new Animated.Value(1))
   const [ cor, setCor ] = useState(true);
+  const [ selected, setSelected ] = useState(true);
  
   function handleInput(t) {
     setBusca(t); 
@@ -59,6 +60,13 @@ function Main() {
       
     ]).start();
   }, [])
+
+  function toggleFavorito(index) {
+    let newIgrejas = [...api.igrejas];
+    newIgrejas[index].favorito = !newIgrejas[index].favorito;
+    setResult(newIgrejas);
+  }
+
  
   return (
     <Animated.View style={{padding: 20, flex: 1 , backgroundColor: "#0336FF", opacity: fadeAnim}}>
@@ -90,18 +98,13 @@ function Main() {
         style={{marginTop: 20}}
         data={result}
         keyExtractor={item => item.id}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <View style={{borderRadius: 4, padding: 10, margin: 5, backgroundColor: "white"}}>
 
             <View style={{flexDirection: 'row', alignItems: "center"}}>
-              <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
-              <Botao onPress={()=> setCor(!cor)}>
-                {cor && 
-                  <Icon style={{marginLeft: 10}} name="star" size={25} color="black" />
-                }
-                {!cor && 
-                  <Icon style={{marginLeft: 10}} name="star" size={25} color="yellow" />
-                }
+              <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} - {item.favorito.toString()} </Text>
+              <Botao onPress={()=> [setSelected(!selected), toggleFavorito(index)]}>
+                <Img name="star" size={25} color={(index)} />
               </Botao>
             </View>
 
