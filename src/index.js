@@ -1,5 +1,15 @@
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
+import { Provider } from 'react-redux';
+import Store from '../src/Store';
+
 
 import MainTabs from './Navigators/MainTab';
 
-export default createAppContainer(MainTabs);
+const AppContainer = createAppContainer(MainTabs);
+
+export default () => (
+  <Provider store={Store}>
+    <AppContainer />
+  </Provider>
+)

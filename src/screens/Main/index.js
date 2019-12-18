@@ -8,6 +8,7 @@ import {
   StatusBar,
   Animated,
 } from 'react-native';
+import { connect } from 'react-redux';
 
 import {Botao, Img} from './styles';
 
@@ -20,8 +21,6 @@ function Main() {
   const [ result, setResult ] = useState(''); 
   const [growAnim] = useState(new Animated.Value(0))
   const [fadeAnim] = useState(new Animated.Value(1))
-  const [ cor, setCor ] = useState(true);
-  const [ selected, setSelected ] = useState(true);
  
   function handleInput(t) {
     setBusca(t); 
@@ -103,7 +102,7 @@ function Main() {
 
             <View style={{flexDirection: 'row', alignItems: "center"}}>
               <Text style={{fontSize: 20, marginBottom: 2, fontWeight: "bold"}}> {item.nome} </Text>
-              <Botao onPress={()=> [setSelected(!selected), toggleFavorito(index)]}>
+              <Botao onPress={()=> [toggleFavorito(index)]}>
                 <Img name="star" size={25} index={item.favorito} />
               </Botao>
             </View>
@@ -133,4 +132,16 @@ function Main() {
   );
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    favorito:state.favoritoReducer.favorito,
+  };
+};
+
+const dispatchToProps = (dispatch) => {
+  return {
+    setFavorito: (favorito)=> dispatch({type: 'SET_FAVORITO', payload: {favorito}})
+  };
+};
+
+export default connect(mapStateToProps, dispatchToProps)(Main);

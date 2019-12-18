@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
+import { View, Text, ScrollView, Button } from 'react-native';
 
-export default function Favorites() {
+import api from '../../data/api.json';
+
+function Favorites(props) {
   return  (
     <View style={{flex: 1, backgroundColor: "#0336FF", padding: 20}}>
       <View style={{borderBottomColor: "#fff", borderBottomWidth: 0.5, marginLeft: 11, marginRight: 11, marginBottom: 10}}>
@@ -10,7 +13,7 @@ export default function Favorites() {
 
       <ScrollView style={{flex: 1}}>
       <View style={{flex: 1, borderRadius: 4, padding: 10, margin: 10, backgroundColor: "white"}}>
-        <Text> uma igreja </Text>
+        <Text> {JSON.stringify(props.favorito)} </Text>
       </View>
       <View style={{flex: 1, borderRadius: 4, padding: 10, margin: 10, backgroundColor: "white"}}>
         <Text> uma igreja </Text>
@@ -25,3 +28,17 @@ export default function Favorites() {
     </View>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    favorito:state.favoritoReducer.favorito,
+  };
+};
+
+const dispatchToProps = (dispatch) => {
+  return {
+    setName: (name)=> dispatch({type: 'SET_NAME', payload: {name}})
+  };
+};
+
+export default connect(mapStateToProps, dispatchToProps)(Favorites);
